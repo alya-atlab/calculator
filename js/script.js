@@ -45,3 +45,27 @@ function prefix_calculation() {
 
   return stack[0];
 }
+function postfix_calculation() {
+  const post = postfix_input.value;
+
+  let arr = post.split(" ");
+  console.log(post);
+  console.log(arr);
+  let stack = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (!isNaN(+arr[i])) {
+      stack.push(+arr[i]);
+    } else {
+      let x = stack.pop();
+      let y = stack.pop();
+      stack.push(calculation(x, y, arr[i]));
+    }
+  }
+
+  return stack[0];
+}
+evaluate.addEventListener("click", () => {
+  console.log(valid_postfix_input());
+  console.log(postfix_calculation());
+});
