@@ -25,3 +25,23 @@ function calculation(x, y, operation) {
     return x / y;
   }
 }
+function prefix_calculation() {
+  const pre = prefix_input.value;
+
+  let arr = pre.split(" ");
+  console.log(pre);
+  console.log(arr);
+  let stack = [];
+
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if (!isNaN(+arr[i])) {
+      stack.push(+arr[i]);
+    } else {
+      let x = stack.pop();
+      let y = stack.pop();
+      stack.push(calculation(x, y, arr[i]));
+    }
+  }
+
+  return stack[0];
+}
