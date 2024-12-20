@@ -3,10 +3,11 @@ const postfix_input = document.getElementById("postfix");
 const evaluate = document.getElementById("evaluate");
 const clear = document.getElementById("clear");
 const res = document.getElementById("result");
-let explain = document.createElement("div");
+const explain = document.createElement("div");
 document.body.appendChild(explain);
 explain.style.margin = "20px";
 explain.style.color = "white";
+
 function valid_prefix_input() {
   const pre = prefix_input.value;
   valid = /^[+\-*/] ( \d+)|( \d+)*$/;
@@ -21,6 +22,7 @@ function valid_prefix_input() {
   }
   return valid.test(pre);
 }
+
 function valid_postfix_input() {
   const post = postfix_input.value;
   valid = /^(\d+ )|( \d+\s)+([+\-*/])*/;
@@ -35,6 +37,7 @@ function valid_postfix_input() {
   }
   return valid.test(post);
 }
+
 function calculation(x, y, operation) {
   if (operation == "+") {
     return x + y;
@@ -46,6 +49,7 @@ function calculation(x, y, operation) {
     return x / y;
   }
 }
+
 function prefix_calculation() {
   const pre = prefix_input.value;
   let arr = pre.split(" ");
@@ -62,6 +66,7 @@ function prefix_calculation() {
 
   return stack[0];
 }
+
 function postfix_calculation() {
   const post = postfix_input.value;
   let arr = post.split(" ");
@@ -89,6 +94,7 @@ function prefix() {
     return "please check the rules!";
   }
 }
+
 function postfix() {
   if (valid_postfix_input()) {
     explain.innerHTML = "";
@@ -99,6 +105,7 @@ function postfix() {
     return "please check the rules!";
   }
 }
+
 evaluate.addEventListener("click", () => {
   if (!prefix_input.value == "" && postfix_input.value == "") {
     res.innerHTML = prefix();
@@ -110,6 +117,7 @@ evaluate.addEventListener("click", () => {
     res.innerHTML = "Please enter your equation!";
   }
 });
+
 clear.addEventListener("click", () => {
   prefix_input.value = "";
   postfix_input.value = "";
