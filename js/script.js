@@ -75,6 +75,29 @@ function postfix_calculation() {
 
   return stack[0];
 }
+
+function prefix() {
+  if (valid_prefix_input()) {
+    return prefix_calculation();
+  } else {
+    return "please check the rules!";
+  }
+}
+function postfix() {
+  if (valid_postfix_input()) {
+    return postfix_calculation();
+  } else {
+    return "please check the rules!";
+  }
+}
 evaluate.addEventListener("click", () => {
-  console.log(valid_postfix_input());
+  if (!prefix_input.value == "" && postfix_input.value == "") {
+    res.innerHTML = prefix();
+  } else if (prefix_input.value == "" && !postfix_input.value == "") {
+    res.innerHTML = postfix();
+  } else if (!prefix_input.value == "" && !postfix_input.value == "") {
+    res.innerHTML = "Please choose one expression at a time!";
+  } else {
+    res.innerHTML = "Please enter your equation!";
+  }
 });
