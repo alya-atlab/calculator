@@ -121,4 +121,5 @@ evaluate.addEventListener("click", () => {
 clear.addEventListener("click", () => {
   prefix_input.value = "";
   postfix_input.value = "";
+  res.innerHTML = "";
 });
