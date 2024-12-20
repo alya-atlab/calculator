@@ -3,7 +3,10 @@ const postfix_input = document.getElementById("postfix");
 const evaluate = document.getElementById("evaluate");
 const clear = document.getElementById("clear");
 const res = document.getElementById("result");
-
+let explain = document.createElement("div");
+document.body.appendChild(explain);
+explain.style.margin = "20px";
+explain.style.color = "white";
 function valid_prefix_input() {
   const pre = prefix_input.value;
   valid = /^[+\-*/] ( \d+)|( \d+)*$/;
@@ -78,15 +81,21 @@ function postfix_calculation() {
 
 function prefix() {
   if (valid_prefix_input()) {
+    explain.innerHTML = "";
     return prefix_calculation();
   } else {
+    explain.innerHTML =
+      "Prefix notation is a mathematical notation in which the operator precedes its operands, such as + 3 4 instead of 3 + 4.";
     return "please check the rules!";
   }
 }
 function postfix() {
   if (valid_postfix_input()) {
+    explain.innerHTML = "";
     return postfix_calculation();
   } else {
+    explain.innerHTML =
+      "Postfix notation is a mathematical notation in which the operator follows its operands, such as 3 4 + instead of 3 + 4.";
     return "please check the rules!";
   }
 }
