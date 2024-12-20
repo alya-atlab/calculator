@@ -14,6 +14,3 @@ function valid_postfix_input() {
   valid = /^(\d+ )|( \d+)*[+\-*/]/;
   return valid.test(post);
 }
-evaluate.addEventListener("click", () => {
-  console.log(valid_postfix_input());
-});
