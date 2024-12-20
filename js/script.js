@@ -6,12 +6,30 @@ const res = document.getElementById("result");
 
 function valid_prefix_input() {
   const pre = prefix_input.value;
-  valid = /^[+\-*/]+( \d+)|( \d+)+$/;
+  valid = /^[+\-*/] ( \d+)|( \d+)*$/;
+
+  let arr = pre.split(" ");
+  for (let i = 0; i < arr.length; i++) {
+    if (isNaN(+arr[i])) {
+      if (arr[i].length > 1) {
+        return false;
+      }
+    }
+  }
   return valid.test(pre);
 }
 function valid_postfix_input() {
   const post = postfix_input.value;
-  valid = /^(\d+ )|( \d+)*[+\-*/]/;
+  valid = /^(\d+ )|( \d+\s)+([+\-*/])*/;
+
+  let arr = post.split(" ");
+  for (let i = 0; i < arr.length; i++) {
+    if (isNaN(+arr[i])) {
+      if (arr[i].length > 1) {
+        return false;
+      }
+    }
+  }
   return valid.test(post);
 }
 function calculation(x, y, operation) {
@@ -57,3 +75,6 @@ function postfix_calculation() {
 
   return stack[0];
 }
+evaluate.addEventListener("click", () => {
+  console.log(valid_postfix_input());
+});
