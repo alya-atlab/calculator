@@ -27,12 +27,8 @@ function calculation(x, y, operation) {
 }
 function prefix_calculation() {
   const pre = prefix_input.value;
-
   let arr = pre.split(" ");
-  console.log(pre);
-  console.log(arr);
   let stack = [];
-
   for (let i = arr.length - 1; i >= 0; i--) {
     if (!isNaN(+arr[i])) {
       stack.push(+arr[i]);
@@ -47,12 +43,8 @@ function prefix_calculation() {
 }
 function postfix_calculation() {
   const post = postfix_input.value;
-
   let arr = post.split(" ");
-  console.log(post);
-  console.log(arr);
   let stack = [];
-
   for (let i = 0; i < arr.length; i++) {
     if (!isNaN(+arr[i])) {
       stack.push(+arr[i]);
@@ -65,7 +57,3 @@ function postfix_calculation() {
 
   return stack[0];
 }
-evaluate.addEventListener("click", () => {
-  console.log(valid_postfix_input());
-  console.log(postfix_calculation());
-});
