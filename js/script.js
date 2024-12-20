@@ -101,3 +101,7 @@ evaluate.addEventListener("click", () => {
     res.innerHTML = "Please enter your equation!";
   }
 });
+clear.addEventListener("click", () => {
+  prefix_input.value = "";
+  postfix_input.value = "";
+});
